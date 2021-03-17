@@ -1,7 +1,7 @@
 from subprocess import Popen, PIPE
 from math import *
 import random
-import numpy as np
+#import numpy as np
 import RNA
 from copy import deepcopy
 from types import IntType, ListType, TupleType, StringTypes
@@ -360,10 +360,10 @@ def UCTRNA():
     one_search_start_time=time.time()
     time_out=one_search_start_time+60*10
     state = RNAstructure()
-    print "search length:" + str(state.n) + "\n"
+    print("search length:" + str(state.n) + "\n")
     k=random.choice(state.GetPositions())
     m,goal,GCC = MCTS(root = state, k=k, verbose = False)
-    print "Solution:" + str(m)
+    print("Solution:" + str(m))
     if goal==1.0:
         finish_time=time.time()-one_search_start_time
     else:
@@ -486,7 +486,7 @@ def UCTRNAnoGC():
     one_search_start_time=time.time()
     time_out=one_search_start_time+60*10
     state = RNAstructure()
-    print "search length:" + str(state.n) + "\n"
+    print("search length:" + str(state.n) + "\n")
 
     k=state.GetPositions()
     m,goal,GC= MCTSnoGC(root = state, itermax = 100000, k=k, verbose = False)
@@ -496,10 +496,10 @@ def UCTRNAnoGC():
     else:
         finish_time=0.0
 
-    print "solution:"+ str(m)
-    print "running time:" + str(finish_time)
-    print "GC-content:"+str(GC)
-    print "structure distance:" + str(goal)
+    print( "solution:"+ str(m))
+    print("running time:" + str(finish_time))
+    print( "GC-content:"+str(GC))
+    print("structure distance:" + str(goal))
 
 
 def calculate_structure_distance(structure_s, str_length ,some_str_value):
@@ -972,7 +972,7 @@ def obtain_initial_sequence(input_structure_s):##obtain some good initial sequen
     some_str_distance=calculate_structure_distance(input_structure_s,len(input_structure_s),some_str_value)
     ini_seq_pool.append(some_ini_seq)
     ini_str_pool.append(some_str_distance)
-    print some_str_value
+    print(some_str_value)
 
 
 
@@ -1137,7 +1137,7 @@ def  calculate_GC_numbers(eposl,defined_GC,need,poslalpha):
 
 def error_check(defined_GC1,defined_gd1,s1,d1):
     if defined_GC1>1.0 or defined_GC1<0.0:
-        print "Error,please input a right range in [0, 1.0]"
+        print("Error,please input a right range in [0, 1.0]")
 
 def calculate__pseudo_sequence_position(seq):
     stack = []
@@ -1221,15 +1221,16 @@ def calculate__pseudo_mfe_and_str_pkiss(sequence):
     return mfe,str_v
 
 def checkpKiss():
-
+    print("Please install pKiss")
+    print("Download from http://bibiserv2.cebitec.uni-bielefeld.de/pkiss")
+    exit(0)
   	#pKiss_output = subprocess.Popen(["which", "pKiss_mfe"], stdout=subprocess.PIPE).communicate()[0].strip()
-  	pKiss_output = subprocess.Popen(["which", "pKiss_mfe"], stdout=subprocess.PIPE, shell=True).communicate()[0].strip()
-	if len(pKiss_output) > 0 and pKiss_output.find("found") == -1 and pKiss_output.find(" no ") == -1:
-		return True
-	else:
-		print "Please install pKiss"
-		print "Download from http://bibiserv2.cebitec.uni-bielefeld.de/pkiss"
-		exit(0)
+  	#pKiss_output = subprocess.Popen(["which", "pKiss_mfe"], stdout=subprocess.PIPE, shell=True).communicate()[0].strip()
+
+	#if (len(pKiss_output)) > 0 and (pKiss_output.find("found") == -1) and (pKiss_output.find(" no ") == -1):
+	#	return True
+	#else:
+		
 
 
 def pseudoknot_RNApKplex(se):
@@ -1250,8 +1251,8 @@ def checkRNAfold():
 	if len(RNAfold_output) > 0 and RNAfold_output.find("found") == -1 and RNAfold_output.find(" no ") == -1:
 		return True
 	else:
-		print "Please install RNAfold"
-		print "Download from http://www.tbi.univie.ac.at/"
+		print("Please install RNAfold")
+		print("Download from http://www.tbi.univie.ac.at/")
 		exit(0)
 
 def pseudoknot_pkiss(se):
@@ -1305,16 +1306,16 @@ if __name__ == "__main__":
     if defined_GC<=1.0 and defined_GC>=0.0:
         best_str,GC,run_time=UCTRNA()
         if best_str==1.0:
-            print "running time:"+str(run_time)
-            print "GC content:"+str(GC)
-            print "GC distance:"+str(abs(GC-defined_GC))
-            print "structure distance:" +str(best_str)
+            print("running time:"+str(run_time))
+            print("GC content:"+str(GC))
+            print("GC distance:"+str(abs(GC-defined_GC)))
+            print("structure distance:" +str(best_str))
 
         else:
-            print "running time:"+str(run_time)
-            print "GC content:"+str(GC)
-            print "GC distance:"+str(abs(GC-defined_GC))
-            print "structure distance:" +str(best_str)
+            print("running time:"+str(run_time))
+            print("GC content:"+str(GC))
+            print("GC distance:"+str(abs(GC-defined_GC)))
+            print("structure distance:" +str(best_str))
 
     else:
         UCTRNAnoGC()
