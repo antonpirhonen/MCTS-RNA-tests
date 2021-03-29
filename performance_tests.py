@@ -4,8 +4,8 @@ import sys
 sys.path.append('/usr/local/lib/python2.7/site-packages/')
 import RNA
 import time
-fwrite = open("performance-test-results.txt", "a")
-fread  = open("performance-test-sequences.txt", "r")
+fwrite = open("performance_test_results.txt", "a")
+fread  = open("performance_test_sequences.txt", "r")
 seq = fread.readline()
 fwrite.write("Sequence,Runtime,GCcontent,GCdistance,StructureDistance\n")
 while len(seq) != 0:

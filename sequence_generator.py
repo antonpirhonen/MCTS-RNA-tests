@@ -20,16 +20,16 @@ def createSequence(length):
 		i += 1
 	return "".join(array)
 	
-f = open("performance-test-sequences.txt", "w")
-i = 0
-while i < 20:
-	i += 1
-	f.write("#Sequences of length: " + str(10*i) + "\n")
-	j = 0
-	while j < 10:
-		seq = createSequence(10*i)
-		f.write(seq + "\n")
-		j+=1
+# f = open("performance-test-sequences.txt", "a")
+# i = 0
+# while i < 20:
+# 	i += 1
+# 	f.write("#Sequences of length: " + str(10*i) + "\n")
+# 	j = 0
+# 	while j < 10:
+# 		seq = createSequence(10*i)
+# 		f.write(seq + "\n")
+# 		j+=1
 	
-f.close()
+# f.close()
 
