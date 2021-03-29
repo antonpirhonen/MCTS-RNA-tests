@@ -7,8 +7,7 @@ import time
 fwrite = open("performance-test-results.txt", "a")
 fread  = open("performance-test-sequences.txt", "r")
 seq = fread.readline()
-fwrite("Runtime,GCcontent,GCdistance,StructureDistance")
-fwrite.flush()
+fwrite.write("Sequence,Runtime,GCcontent,GCdistance,StructureDistance\n")
 while len(seq) != 0:
 	seq = seq.replace("\n", "")
 	if (seq[0] == "#"):
