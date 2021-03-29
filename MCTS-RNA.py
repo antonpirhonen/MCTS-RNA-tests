@@ -1,7 +1,14 @@
+# Created by Yang, X., Yoshizoe, K., Taneda, A. & Tsuda, K. 2017,
+# "RNA inverse folding using Monte Carlo tree search",
+# BMC Bioinformatics, vol. 18, no. 1, pp. 1-12.
+# DOI: https://doi.org/10.1186/s12859-017-1882-7
+
+import sys
+sys.path.append('/usr/local/lib/python2.7/site-packages/')
 from subprocess import Popen, PIPE
 from math import *
 import random
-#import numpy as np
+import numpy as np
 import RNA
 from copy import deepcopy
 from types import IntType, ListType, TupleType, StringTypes

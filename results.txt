@@ -1,0 +1,7 @@
+search length:8
+
+Solution:CACGCGGUCGUG
+running time:0.00185704231262
+GC content:0.75
+GC distance:0.0
+structure distance:1.0
