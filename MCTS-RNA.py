@@ -1312,17 +1312,19 @@ if __name__ == "__main__":
     ini_seq,ini_str_seq=getwholesequence(b,c ,d , copy_str_uindex)
     if defined_GC<=1.0 and defined_GC>=0.0:
         best_str,GC,run_time=UCTRNA()
+        output_file = open("performance-test-results.txt", "a")
         if best_str==1.0:
             print("running time:"+str(run_time))
             print("GC content:"+str(GC))
             print("GC distance:"+str(abs(GC-defined_GC)))
             print("structure distance:" +str(best_str))
-
+            output_file.write(str(run_time) + "," + str(GC) + "," + str(abs(GC-defined_GC)) + "," + str(best_str) + "\n")
         else:
             print("running time:"+str(run_time))
             print("GC content:"+str(GC))
             print("GC distance:"+str(abs(GC-defined_GC)))
             print("structure distance:" +str(best_str))
-
+            output_file.write(str(run_time) + "," + str(GC) + "," + str(abs(GC-defined_GC)) + "," + str(best_str) + "\n")
+        output_file.close()
     else:
         UCTRNAnoGC()
