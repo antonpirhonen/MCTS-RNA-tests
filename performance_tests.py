@@ -7,7 +7,7 @@ import time
 fwrite = open("performance_test_results.txt", "a")
 fread  = open("performance_test_sequences.txt", "r")
 seq = fread.readline()
-fwrite.write("Sequence,Runtime,GCcontent,GCdistance,StructureDistance\n")
+fwrite.write("Sequence,SecondaryStructure,Runtime,GCcontent,GCdistance,StructureDistance\n")
 while len(seq) != 0:
 	seq = seq.replace("\n", "")
 	if (seq[0] == "#"):
@@ -18,6 +18,8 @@ while len(seq) != 0:
 	time.sleep(.5)
 	gc = GCcount.GCcount(seq)
 	seq = RNA.fold(seq)[0]
+	fwrite.write(seq + ",")
+	fwrite.flush()
 	os.system("python2 MCTS-RNA.py -s \"" + seq + "\" -GC " + str(gc) + " -d 0.02 -pk 0")
 	seq = fread.readline()
 
