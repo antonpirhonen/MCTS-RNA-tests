@@ -7,8 +7,6 @@ with open("performance_test_results.csv") as csvfile:
     i = 0
     for row in reader:
         i+=1
-        if i > 460:
-            break
         print("Length: " + row[2] + " Runtime: " + row[3])
         if row[3] == "0.0":
             print("Max runtime reached for a sequence of length: " + row[2] + " at line " + str(i))
