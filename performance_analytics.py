@@ -1,6 +1,6 @@
 import csv
 result_map = {}
-with open("performance_test_results.csv") as csvfile:
+with open("performance_test_results_long.csv") as csvfile:
     reader = csv.reader(csvfile)
     print(reader.__next__())
     # Sequence,SecondaryStructure,Length,Runtime,GCcontent,GCdistance,StructureDistance
@@ -21,8 +21,8 @@ with open("performance_test_results.csv") as csvfile:
         else:
             result_map[row[2]].append(float(row[3]))
     
-stats = open("performance_test_statistics.csv", "w")
-stats.write("Length,AverageRuntime,MedianRuntime,MaxCount\n") # Add median runtime?
+stats = open("performance_test_long_statistics.csv", "w")
+stats.write("Length,AverageRuntime,MedianRuntime,MaxCount\n")
 
 def replaceNoneWithInf(num):
     if num == None:
@@ -33,16 +33,19 @@ def calculateMedian(arr):
     maxcount = arr.count(None)
     arr = list(map(replaceNoneWithInf, arr))
     arr.sort()
-    print("Array: ", arr)
-    if maxcount >= 5:
-        return ">60"
+    l = len(arr)
+    if maxcount >= l/2:
+        return ">300"
     else:
-        return str((arr[4] + arr[5]) / 2)
+        if l % 2 == 0:
+            return str((arr[int(l/2)] + arr[int(l/2-1)]) / 2)
+        else:
+            return str(arr[int(l/2)])
 
 for key in result_map:
     arr = result_map[key]
     maxcount = arr.count(None)
-    avg = sum(filter(None, arr))/(len(arr) - maxcount) # average of < 60s runtimes 
+    avg = sum(filter(None, arr))/(len(arr) - maxcount) # average of finished runtimes 
     stats.write(key + "," + str(avg) + "," + calculateMedian(arr) + "," + str(maxcount) + "\n")
 
 stats.close()
