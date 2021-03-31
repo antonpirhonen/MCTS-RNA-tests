@@ -181,7 +181,7 @@ def MCTS(root, k, verbose = False):
 
 
     running_time=time.time()
-    out_time=running_time+60 # Originally out_time=running_time+60*10
+    out_time=running_time+60*5 # Originally out_time=running_time+60*10
     rootnode = Node(state = root)
     state = root.Clone() # but this state is the state of the initialization .  too important !!!
 
@@ -1312,7 +1312,7 @@ if __name__ == "__main__":
     ini_seq,ini_str_seq=getwholesequence(b,c ,d , copy_str_uindex)
     if defined_GC<=1.0 and defined_GC>=0.0:
         best_str,GC,run_time=UCTRNA()
-        output_file = open("performance_test_results.csv", "a")
+        output_file = open("performance_test_results_long.csv", "a")
         if best_str==1.0:
             print("running time:"+str(run_time))
             print("GC content:"+str(GC))
