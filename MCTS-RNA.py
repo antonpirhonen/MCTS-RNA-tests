@@ -1312,7 +1312,7 @@ if __name__ == "__main__":
     ini_seq,ini_str_seq=getwholesequence(b,c ,d , copy_str_uindex)
     if defined_GC<=1.0 and defined_GC>=0.0:
         best_str,GC,run_time=UCTRNA()
-        output_file = open("performance_test_results_long.csv", "a")
+        output_file = open("performance_test_results_many.csv", "a")
         if best_str==1.0:
             print("running time:"+str(run_time))
             print("GC content:"+str(GC))

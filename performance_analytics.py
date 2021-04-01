@@ -1,6 +1,6 @@
 import csv
 result_map = {}
-with open("performance_test_results_long.csv") as csvfile:
+with open("performance_test_results_many.csv") as csvfile:
     reader = csv.reader(csvfile)
     print(reader.__next__())
     # Sequence,SecondaryStructure,Length,Runtime,GCcontent,GCdistance,StructureDistance
@@ -21,7 +21,7 @@ with open("performance_test_results_long.csv") as csvfile:
         else:
             result_map[row[2]].append(float(row[3]))
     
-stats = open("performance_test_long_statistics.csv", "w")
+stats = open("performance_test_many_statistics.csv", "w")
 stats.write("Length,AverageRuntime,MedianRuntime,MaxCount\n")
 
 def replaceNoneWithInf(num):

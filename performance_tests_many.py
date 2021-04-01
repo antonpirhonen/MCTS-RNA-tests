@@ -3,8 +3,8 @@ import GCcount
 import sys
 sys.path.append('/usr/local/lib/python2.7/site-packages/')
 import RNA
-fwrite = open("performance_test_results_long.csv", "a")
-fread  = open("performance_test_sequences_long.txt", "r")
+fwrite = open("performance_test_results_many.csv", "a")
+fread  = open("performance_test_sequences_many.txt", "r")
 seq = fread.readline()
 fwrite.write("Sequence,SecondaryStructure,Length,Runtime,GCcontent,GCdistance,StructureDistance\n")
 while len(seq) != 0:
