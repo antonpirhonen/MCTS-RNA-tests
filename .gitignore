@@ -2,3 +2,4 @@ MCTS-RNA.py
 __pycache__
 *.ps
 *.pyc
+temp.txt
